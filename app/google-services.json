@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693460534757",
+    "project_id": "instalker-e1a03",
+    "storage_bucket": "instalker-e1a03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693460534757:android:08e740a8fed4ae7d705b0c",
+        "android_client_info": {
+          "package_name": "com.example.instalker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvJQFzRtMGr53CWBDAaDxGoWLUEaZzsCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
