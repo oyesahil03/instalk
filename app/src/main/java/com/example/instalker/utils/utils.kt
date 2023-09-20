@@ -12,10 +12,11 @@ fun uploadImage (uri:Uri, folderName: String,callback: (String?)->Unit){
         .addOnSuccessListener {
             it.storage.downloadUrl.addOnSuccessListener {
                 imageUrl=it.toString()
+                callback(imageUrl)
 
             }
         }
-    callback(imageUrl)
+
 
 
 }

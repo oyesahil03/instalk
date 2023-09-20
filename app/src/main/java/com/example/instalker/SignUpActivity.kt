@@ -8,8 +8,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instalker.Models.User
 import com.example.instalker.databinding.ActivitySignUpBinding
+import com.example.instalker.utils.USER_NODE
 import com.example.instalker.utils.USER_PROFILE_FOLDER
-import com.example.instalker.utils.User_Node
+import com.example.instalker.utils.USER_NODE
 import com.example.instalker.utils.uploadImage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -21,7 +22,7 @@ import com.squareup.picasso.Picasso
 class SignUpActivity : AppCompatActivity() {
     val binding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
-    }
+    } //Demoooooo
     lateinit var user: User
     private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) {
 
@@ -50,7 +51,7 @@ class SignUpActivity : AppCompatActivity() {
         if (intent.hasExtra("MODE")) {
             if (intent.getIntExtra("MODE", -1) == 1) {
                 binding.signUpBtn.text = "Update Profile"
-                Firebase.firestore.collection(User_Node)
+                Firebase.firestore.collection(USER_NODE)
                     .document(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
 
                         user = it.toObject<User>()!!
@@ -68,7 +69,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.signUpBtn.setOnClickListener {
             if (intent.hasExtra("MODE")) {
                 if (intent.getIntExtra("MODE", -1) == 1) {
-                    Firebase.firestore.collection(User_Node)
+                    Firebase.firestore.collection(USER_NODE)
                         .document(Firebase.auth.currentUser!!.uid).set(user)
                         .addOnSuccessListener {
                             startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
@@ -97,7 +98,7 @@ class SignUpActivity : AppCompatActivity() {
                             user.name = binding.name.editText?.text.toString()
                             user.password = binding.password.editText?.text.toString()
                             user.email = binding.email.editText?.text.toString()
-                            Firebase.firestore.collection(User_Node)
+                            Firebase.firestore.collection(USER_NODE)
                                 .document(Firebase.auth.currentUser!!.uid).set(user)
                                 .addOnSuccessListener {
                                     startActivity(
@@ -127,6 +128,9 @@ class SignUpActivity : AppCompatActivity() {
                 startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
                 finish()
             }
+        }
+        binding.profileImage.setOnClickListener {
+            launcher.launch("image/*")
         }
     }
 }

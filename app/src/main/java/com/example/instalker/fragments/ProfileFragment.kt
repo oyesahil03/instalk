@@ -11,7 +11,7 @@ import com.example.instalker.Models.User
 import com.example.instalker.R
 import com.example.instalker.SignUpActivity
 import com.example.instalker.databinding.FragmentProfileBinding
-import com.example.instalker.utils.User_Node
+import com.example.instalker.utils.USER_NODE
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -50,7 +50,7 @@ class ProfileFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        Firebase.firestore.collection(User_Node).document(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
+        Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
 
             val user:User=it.toObject<User>()!!
             binding.name.text=user.name
